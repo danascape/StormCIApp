@@ -4,4 +4,5 @@
     <string name="ip_address">IP Address</string>
     <string name="machine_status">Machine Status</string>
     <string name="done">Done</string>
+    <string name="online">Online</string>
 </resources>

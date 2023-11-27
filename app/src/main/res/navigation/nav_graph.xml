@@ -2,13 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/ipFragment"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ipFragment">
 
     <fragment
         android:id="@+id/serverFragment"
         android:name="dev.danascape.stormci.ServerFragment"
-        tools:layout="@layout/fragment_server" />
+        tools:layout="@layout/fragment_server">
+        <argument
+            android:name="ipAddress"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/ipFragment"
