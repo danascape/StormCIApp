@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/ipFragment"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/serverFragment"
+        android:name="dev.danascape.stormci.ServerFragment"
+        tools:layout="@layout/fragment_server" />
+
+    <fragment
+        android:id="@+id/ipFragment"
+        android:name="dev.danascape.stormci.IPAddressFragment"
+        android:label="ipFragment"
+        tools:layout="@layout/fragment_ip_address">
+        <action
+            android:id="@+id/action_ipFragment_to_serverFragment"
+            app:destination="@id/serverFragment" />
+    </fragment>
+
+</navigation>
