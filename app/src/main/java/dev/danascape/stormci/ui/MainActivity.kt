@@ -1,9 +1,9 @@
-package dev.danascape.stormci
+package dev.danascape.stormci.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

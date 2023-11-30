@@ -5,4 +5,6 @@
     <string name="machine_status">Machine Status</string>
     <string name="done">Done</string>
     <string name="online">Online</string>
+    <string name="port_name">Port Name</string>
+    <string name="use_secure_connection">Use Secure Connection</string>
 </resources>

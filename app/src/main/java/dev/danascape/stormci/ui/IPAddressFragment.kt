@@ -1,4 +1,4 @@
-package dev.danascape.stormci
+package dev.danascape.stormci.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import dev.danascape.stormci.databinding.FragmentIpAddressBinding
+import dev.danascape.stormci.models.IPAddress
 
 class IPAddressFragment : Fragment() {
     private var _binding: FragmentIpAddressBinding? = null
@@ -20,13 +21,21 @@ class IPAddressFragment : Fragment() {
         _binding = FragmentIpAddressBinding.inflate(inflater, container, false)
 
         binding.btnDone.setOnClickListener {
-            val it = binding.etIPAddress.text.toString()
-            if (it.isNotEmpty()) {
-                val action =
-                    IPAddressFragmentDirections.actionIpFragmentToServerFragment().setIpAddress(it)
-                findNavController().navigate(action)
+            val ipAddress = binding.etIPAddress.text.toString()
+            val portName = binding.etPortName.text.toString()
+            val secureConnection: Boolean = binding.rdnHttps.isChecked
+
+            if (ipAddress == "") {
+                Toast.makeText(requireContext(), "Enter IP Address", Toast.LENGTH_SHORT).show()
+            } else if (portName == "") {
+                Toast.makeText(requireContext(), "Enter Port Number", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(), "Enter IP Address", Toast.LENGTH_LONG).show()
+                val serverInfo = IPAddress(ipAddress, portName, secureConnection)
+                val action =
+                    IPAddressFragmentDirections.actionIpFragmentToServerFragment(
+                        serverInfo
+                    )
+                findNavController().navigate(action)
             }
         }
 

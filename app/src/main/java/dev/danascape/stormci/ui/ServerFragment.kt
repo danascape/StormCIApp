@@ -1,4 +1,4 @@
-package dev.danascape.stormci
+package dev.danascape.stormci.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import dev.danascape.stormci.ApiInterface
 import dev.danascape.stormci.databinding.FragmentServerBinding
 import dev.danascape.stormci.models.SystemInfo
 import retrofit2.Call
@@ -27,10 +28,23 @@ class ServerFragment : Fragment() {
     ): View? {
         _binding = FragmentServerBinding.inflate(inflater, container, false)
 
-        val data = args.ipAddress
-        binding.tvIPAddress.text = "IP Address: $data"
+        val data = args.serverDetails
+        binding.tvIPAddress.text = "IP Address: ${data.iPAddress}"
 
-        val retrofit = ApiInterface.create("http://" + data!!).getSystemInfo()
+        fetchSystemInfo(data.secureConnection.toString(), data.iPAddress, data.portName)
+
+        binding.srLayout.setOnRefreshListener {
+            fetchSystemInfo(data.secureConnection.toString(), data.iPAddress, data.portName)
+            binding.srLayout.isRefreshing = false
+        }
+
+        // Inflate the layout for this fragment
+        return binding.root
+    }
+
+    private fun fetchSystemInfo(connection: String, ipAddress: String, port: String) {
+        val serverString = "http://${ipAddress}:$port"
+        val retrofit = ApiInterface.create(serverString).getSystemInfo()
 
         retrofit.enqueue(object: Callback<SystemInfo> {
             override fun onResponse(call: Call<SystemInfo>, response: Response<SystemInfo>) {
@@ -41,8 +55,5 @@ class ServerFragment : Fragment() {
                 Log.e("App","Error: ${t.message}")
             }
         })
-
-        // Inflate the layout for this fragment
-        return binding.root
     }
 }

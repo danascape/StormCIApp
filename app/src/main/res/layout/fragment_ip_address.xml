@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IPAddressFragment">
+    tools:context=".ui.IPAddressFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvIPAddress"
@@ -20,6 +20,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -29,12 +30,12 @@
         android:layout_marginStart="@dimen/fifteen_dp"
         android:layout_marginEnd="@dimen/fifteen_dp"
         android:hint="@string/ip_address"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/etPortLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvIPAddress"
-        app:layout_constraintVertical_bias="0.5">
+        app:layout_constraintVertical_bias="0.3">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etIPAddress"
@@ -45,14 +46,52 @@
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etPortLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/fifteen_dp"
+        android:layout_marginEnd="@dimen/fifteen_dp"
+        android:hint="@string/port_name"
+        app:layout_constraintBottom_toTopOf="@+id/rdnHttps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etIPAddressLayout"
+        app:layout_constraintVertical_bias="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPortName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autoSizeTextType="uniform"
+            android:inputType="text"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rdnHttps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/fifteen_dp"
+        android:layout_marginEnd="@dimen/fifteen_dp"
+        android:text="@string/use_secure_connection"
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPortLayout"
+        app:layout_constraintVertical_bias="0.3" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnDone"
         android:layout_width="140dp"
-        app:cornerRadius="13dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:layout_margin="10dp"
         android:text="@string/done"
+        android:textSize="15sp"
+        app:cornerRadius="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
