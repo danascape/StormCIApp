@@ -1,4 +1,4 @@
-package dev.danascape.stormci.ui
+package dev.danascape.stormci.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,7 +17,7 @@ class IPAddressFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentIpAddressBinding.inflate(inflater, container, false)
 
         binding.btnDone.setOnClickListener {

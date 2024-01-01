@@ -1,4 +1,4 @@
-package dev.danascape.stormci.ui
+package dev.danascape.stormci.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

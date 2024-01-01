@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/serverFragment"
-        android:name="dev.danascape.stormci.ui.ServerFragment"
+        android:name="dev.danascape.stormci.ui.fragments.ServerFragment"
         tools:layout="@layout/fragment_server">
         <argument
             android:name="serverDetails"
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/ipFragment"
-        android:name="dev.danascape.stormci.ui.IPAddressFragment"
+        android:name="dev.danascape.stormci.ui.fragments.IPAddressFragment"
         android:label="ipFragment"
         tools:layout="@layout/fragment_ip_address">
         <action
